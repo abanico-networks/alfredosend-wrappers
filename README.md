@@ -23,3 +23,5 @@ require_relative 'ruby/alfredo'
 client = AlfredoClient.new(api_key: ENV.fetch('ALFREDO_API_KEY'), client_id: ENV.fetch('ALFREDO_CLIENT_ID'))
 client.send_transactional(ENV.fetch('ALFREDO_TEMPLATE_ID'), { to: [{ email: 'cliente@example.com' }] })
 ```
+
+También hay un wrapper y ejemplo específico para aplicaciones [Laravel](./laravel/README.md), basado en el cliente HTTP que Laravel ya incluye.
