@@ -1,5 +1,3 @@
-import { randomUUID } from 'node:crypto'
-
 export class AlfredoClient {
   constructor({ apiKey, clientId, baseUrl = 'https://api.alfredosend.com' }) {
     if (!apiKey || !clientId) throw new Error('apiKey y clientId son obligatorios.')
@@ -8,13 +6,13 @@ export class AlfredoClient {
     this.baseUrl = baseUrl.replace(/\/$/, '')
   }
 
-  async sendTransactional(templateId, payload, { idempotencyKey = randomUUID() } = {}) {
+  async sendTransactional(templateId, payload, { idempotencyKey } = {}) {
     const response = await fetch(`${this.baseUrl}/v1/clients/${this.clientId}/transactional/templates/${templateId}/send`, {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
-        'Idempotency-Key': idempotencyKey,
+        ...(idempotencyKey ? { 'Idempotency-Key': idempotencyKey } : {}),
       },
       body: JSON.stringify(payload),
     })

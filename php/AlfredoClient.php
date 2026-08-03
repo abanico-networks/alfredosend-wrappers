@@ -16,18 +16,23 @@ final class AlfredoClient
         curl_setopt_array($curl, [
             CURLOPT_POST => true,
             CURLOPT_POSTFIELDS => json_encode($payload, JSON_THROW_ON_ERROR),
-            CURLOPT_HTTPHEADER => [
+            CURLOPT_HTTPHEADER => array_filter([
                 'Authorization: Bearer '.$this->apiKey,
                 'Content-Type: application/json',
-                'Idempotency-Key: '.($idempotencyKey ?? bin2hex(random_bytes(16))),
-            ],
+                $idempotencyKey ? 'Idempotency-Key: '.$idempotencyKey : null,
+            ]),
             CURLOPT_RETURNTRANSFER => true,
         ]);
         $response = curl_exec($curl);
         $status = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
-        if ($response === false) throw new RuntimeException(curl_error($curl));
+        if ($response === false) {
+            throw new RuntimeException(curl_error($curl));
+        }
         $body = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
-        if ($status < 200 || $status >= 300) throw new RuntimeException($body['message'] ?? "Alfredo respondió {$status}.");
+        if ($status < 200 || $status >= 300) {
+            throw new RuntimeException($body['message'] ?? "Alfredo respondió {$status}.");
+        }
+
         return $body;
     }
 }

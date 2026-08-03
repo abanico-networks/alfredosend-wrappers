@@ -2,7 +2,7 @@
 
 Clientes ligeros, sin dependencias externas, para disparar transaccionales.
 
-Cada wrapper recibe `apiKey`, `clientId` y `templateId`. Genera una clave de idempotencia por envío; al reintentar la misma operación, pasa la misma clave opcionalmente para evitar un duplicado.
+Cada wrapper recibe `apiKey`, `clientId` y `templateId`. La integración normal no requiere una cabecera `Idempotency-Key`: basta con esos tres valores y el payload del envío. Alfredo genera una clave para cada envío nuevo; solo aporta una propia cuando quieras repetir deliberadamente la misma operación sin duplicarla.
 
 Ejemplos de uso:
 
