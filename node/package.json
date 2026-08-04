@@ -1,3 +1,11 @@
 {
-  "type": "module"
+  "name": "@alfredosend/client",
+  "version": "0.1.0",
+  "description": "Cliente oficial ligero de Alfredo para emails transaccionales.",
+  "type": "module",
+  "exports": "./alfredo.js",
+  "files": ["alfredo.js", "README.md", "LICENSE"],
+  "engines": { "node": ">=18" },
+  "license": "MIT",
+  "scripts": { "test": "node --test" }
 }

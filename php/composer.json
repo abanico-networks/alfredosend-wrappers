@@ -1,0 +1,8 @@
+{
+  "name": "alfredosend/client",
+  "description": "Cliente oficial ligero de Alfredo para emails transaccionales.",
+  "type": "library",
+  "license": "MIT",
+  "require": { "php": "^8.2", "ext-curl": "*", "ext-json": "*" },
+  "autoload": { "psr-4": { "Alfredo\\": "src/" } }
+}
