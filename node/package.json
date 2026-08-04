@@ -1,5 +1,5 @@
 {
-  "name": "@alfredosend/client",
+  "name": "@abanico-networks/alfredosend-client",
   "version": "0.1.0",
   "description": "Cliente oficial ligero de Alfredo para emails transaccionales.",
   "type": "module",

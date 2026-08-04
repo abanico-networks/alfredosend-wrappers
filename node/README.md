@@ -3,7 +3,7 @@
 Requiere Node.js 18 o posterior y usa `fetch` nativo.
 
 ```js
-import { AlfredoClient } from '@alfredosend/client'
+import { AlfredoClient } from '@abanico-networks/alfredosend-client'
 
 const alfredo = new AlfredoClient({
   apiKey: process.env.ALFREDO_API_KEY,

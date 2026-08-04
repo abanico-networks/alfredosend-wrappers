@@ -1,13 +1,13 @@
 # Wrappers de Alfredo
 
-Clientes ligeros y publicables para disparar emails transaccionales. Cada carpeta es un paquete independiente: Node.js (`@alfredosend/client`), PHP (`alfredosend/client`), Ruby (`alfredosend`) y Laravel (`alfredosend/laravel`).
+Clientes ligeros y publicables para disparar emails transaccionales. Cada carpeta es un paquete independiente: Node.js (`@abanico-networks/alfredosend-client`), PHP (`alfredosend/client`), Ruby (`alfredosend`) y Laravel (`alfredosend/laravel`).
 
 Cada wrapper recibe `apiKey`, `clientId` y `templateId`. La integración normal no requiere una cabecera `Idempotency-Key`: Alfredo crea una por cada operación nueva. Aporta una propia solo cuando quieras repetir deliberadamente la misma operación sin duplicarla.
 
 Ejemplos de uso:
 
 ```js
-import { AlfredoClient } from '@alfredosend/client'
+import { AlfredoClient } from '@abanico-networks/alfredosend-client'
 const client = new AlfredoClient({ apiKey: process.env.ALFREDO_API_KEY, clientId: process.env.ALFREDO_CLIENT_ID })
 await client.sendTransactional(process.env.ALFREDO_TEMPLATE_ID, { to: [{ email: 'cliente@example.com' }] })
 ```
